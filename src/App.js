@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      number: 0
+    }
+  }
+
+  addNumber = () => {
+    return this.setState(()=>{
+      return {
+        number: this.state.number + 1 
+      }
+    })
+  }
+
+  takeoutNumber = () => {
+    return this.setState(()=>{
+      return {
+        number: this.state.number -1  
+      }
+    })
+  }
+
+  randomNumber = () => {
+    return this.setState(() => {
+      if(this.number = 7) {
+        console.log("contratulations!!");
+      }
+      return {
+        number: Math.floor(Math.random() * 10)
+      }
+      
+    })
+  }
+
+
+  render(){
+    const {number} = this.state;
+    return(
+      <div>
+        <p>Initial number: {number}</p>
+        <button onClick={()=>{this.addNumber()}}>+</button>
+        <button onClick={()=>{this.takeoutNumber()}}>-</button>
+        <button onClick={()=>{this.randomNumber()}}>random</button>
+      </div>
+    )
+  }
 }
 
 export default App;
